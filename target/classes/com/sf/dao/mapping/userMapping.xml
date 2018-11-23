@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.dao.UserDao">
+
+	<select id="getUsers"
+		resultType="User">
+        <![CDATA[
+            select
+                username,
+                password
+            from
+                user
+        ]]>
+     </select>
+		
+		<select id="getUser" parameterType="User"
+		resultType="User">
+        <![CDATA[
+            select
+                username,
+                password
+            from
+                user
+        ]]>
+		<where>
+			<if test="username != null and username != ''">
+				and username = #{username}
+			</if>
+		</where>
+
+	</select>
+
+	<insert id="addUser" parameterType="User">
+		INSERT INTO user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="username !=null">username,</if>
+			<if test="password != null">password,</if>
+		</trim>
+		VALUES
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="username!=null">#{username},</if>
+			<if test="password != null">#{password},</if>
+		</trim>
+	</insert>
+	
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM user
+		WHERE id =#{userId}
+	</delete>
+</mapper>

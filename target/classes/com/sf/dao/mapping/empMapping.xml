@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.dao.EmpDao">
+
+	<sql id="getEmps">
+		id,empName,gender,email,deptName 
+	</sql>
+	<select id="getEmpsByPage"
+		resultType="Emp">
+
+            select
+                <include refid="getEmps" />
+            from
+                emp
+     </select>
+</mapper>
