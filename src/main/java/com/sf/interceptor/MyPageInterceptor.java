@@ -64,7 +64,8 @@ public class MyPageInterceptor implements Interceptor {
             //获取进行数据库操作时管理参数的handler
             ParameterHandler parameterHandler = (ParameterHandler) MetaObjectHandler.getValue("delegate.parameterHandler");
             //获取请求时的参数
-            Map<String, Object> paraObject = (Map<String, Object>) parameterHandler.getParameterObject();
+            @SuppressWarnings("unchecked")
+			Map<String, Object> paraObject = (Map<String, Object>) parameterHandler.getParameterObject();
             //也可以这样获取
             //paraObject = (Map<String, Object>) statementHandler.getBoundSql().getParameterObject();
 
@@ -102,6 +103,16 @@ public class MyPageInterceptor implements Interceptor {
         //如果项目中分页的pageSize是统一的，也可以在这里统一配置和获取，这样就不用每次请求都传递pageSize参数了。参数是在配置拦截器时配置的。
         String limit1 = properties.getProperty("limit", "10");
         this.pageSize = Integer.valueOf(limit1);
-        this.dbType = properties.getProperty("dbType", "mysql");
+        this.setDbType(properties.getProperty("dbType", "mysql"));
     }
+
+
+	public String getDbType() {
+		return dbType;
+	}
+
+
+	public void setDbType(String dbType) {
+		this.dbType = dbType;
+	}
 }
