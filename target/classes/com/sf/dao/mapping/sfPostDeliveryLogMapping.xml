@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.dao.SfPostDeliveryLogDao">
+
+	<sql id="sql1">
+		monthly_card_no,phone_number,begin_time,end_time,delivery_nums,remark 
+	</sql>
+	
+	<select id="getDeliveryLogByPage"
+		resultType="SfPostDeliveryLog">
+		SELECT
+             <include refid="sql1" />
+        FROM
+        sfPost_delivery_log
+     </select>
+     
+     <select id="getSfPostDeliveryLogByMonthcard" parameterType="java.lang.String"
+		resultType="SfPostDeliveryLog">
+		SELECT
+             <include refid="sql1" />
+        FROM
+        sfPost_delivery_log
+        <where>
+        	<if test="monthly_card_no != null and monthly_card_no!=''">
+        		monthly_card_no = #{monthly_card_no}
+        	</if>
+        </where>
+     </select>
+     
+     <insert id="insertDeliveryLog" parameterType="SfPostDeliveryLog">
+		INSERT INTO sfPost_delivery_log(<include refid="sql1" />)
+        VALUES
+        (#{monthly_card_no},#{phone_number},now(),#{end_time},#{delivery_nums},#{remark})
+     </insert>
+     
+     <update id="updateDeliveryEnd">
+     	update sfPost_delivery_log set end_time=now(),delivery_nums=#{delivery_nums}
+        where monthly_card_no=#{monthly_card_no} order by begin_time desc limit 1
+     </update>
+</mapper>
