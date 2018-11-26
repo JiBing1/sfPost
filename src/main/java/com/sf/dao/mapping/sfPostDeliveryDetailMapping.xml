@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.dao.SfPostDeliveryDetailDao">
+
+	<sql id="sql1">
+		monthly_card_no,waybill_no,delivery_time,remark,deptName
+	</sql>
+	<insert id="insertDeliveryDetail" parameterType="SfPostDeliveryDetail">
+			INSERT INTO sfPost_delivery_detail
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="monthly_card_no !=null">monthly_card_no,</if>
+				<if test="waybill_no != null">waybill_no,</if>
+				<if test="delivery_time != null">delivery_time,</if>
+				<if test="remark != null">remark,</if>
+			</trim>
+			VALUES
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="monthly_card_no !=null">#{monthly_card_no},</if>
+				<if test="waybill_no != null">#{waybill_no},</if>
+				<if test="delivery_time != null">#{delivery_time},</if>
+				<if test="remark != null">#{remark},</if>
+			</trim>
+            
+     </insert>
+</mapper>
