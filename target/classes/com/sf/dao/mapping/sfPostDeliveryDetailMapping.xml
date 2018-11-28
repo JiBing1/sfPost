@@ -3,22 +3,18 @@
 <mapper namespace="com.sf.dao.SfPostDeliveryDetailDao">
 
 	<sql id="sql1">
-		monthly_card_no,waybill_no,delivery_time,remark,deptName
+		waybill_no,delivery_time
 	</sql>
 	<insert id="insertDeliveryDetail" parameterType="SfPostDeliveryDetail">
 			INSERT INTO sfPost_delivery_detail
 			<trim prefix="(" suffix=")" suffixOverrides=",">
-				<if test="monthly_card_no !=null">monthly_card_no,</if>
 				<if test="waybill_no != null">waybill_no,</if>
 				<if test="delivery_time != null">delivery_time,</if>
-				<if test="remark != null">remark,</if>
 			</trim>
 			VALUES
 			<trim prefix="(" suffix=")" suffixOverrides=",">
-				<if test="monthly_card_no !=null">#{monthly_card_no},</if>
 				<if test="waybill_no != null">#{waybill_no},</if>
 				<if test="delivery_time != null">#{delivery_time},</if>
-				<if test="remark != null">#{remark},</if>
 			</trim>
             
      </insert>

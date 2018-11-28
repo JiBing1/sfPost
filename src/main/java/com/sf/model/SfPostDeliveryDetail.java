@@ -1,16 +1,9 @@
 package com.sf.model;
 
 public class SfPostDeliveryDetail {
-	private String monthly_card_no;
 	private String waybill_no;
 	private String delivery_time;
-	private String remark;
-	public String getMonthly_card_no() {
-		return monthly_card_no;
-	}
-	public void setMonthly_card_no(String monthly_card_no) {
-		this.monthly_card_no = monthly_card_no;
-	}
+
 	public String getWaybill_no() {
 		return waybill_no;
 	}
@@ -22,13 +15,6 @@ public class SfPostDeliveryDetail {
 	}
 	public void setDelivery_time(String delivery_time) {
 		this.delivery_time = delivery_time;
-	}
-	public String getRemark() {
-		return remark;
-	}
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	
+	}	
 	
 }

@@ -28,7 +28,6 @@ public class SfPostDeliveryLogServiceImpl implements SfPostDeliveryLogService{
 
 	@Override
 	public int updateDeliveryEndLog(SfPostDeliveryLog recored) {
-		// TODO Auto-generated method stub
 		return sfPostDeliveryLogDao.updateDeliveryEnd(recored);
 	}
 

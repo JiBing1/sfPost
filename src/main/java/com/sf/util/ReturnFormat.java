@@ -44,6 +44,9 @@ public class ReturnFormat {
       messageMap.put("2021", "无操作权限");
       messageMap.put("2022", "RSA解密失败,密文数据已损坏");
       messageMap.put("2023", "请重新登录");
+      
+      messageMap.put("3000", "上传投递件信息失败");
+      messageMap.put("3001", "获取post信息失败");
   }
   public static Map<String,Object> retParam(int status,Object data) {
 	  HashMap<String,Object> result = new HashMap<String,Object>();

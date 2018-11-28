@@ -16,8 +16,6 @@
         </plugin>
     </plugins>
 	<mappers>
-		<mapper resource="com/sf/dao/mapping/userMapping.xml" />
-		<mapper resource="com/sf/dao/mapping/empMapping.xml" />
 		<mapper resource="com/sf/dao/mapping/sfPostDeliveryDetailMapping.xml"/>
 		<mapper resource="com/sf/dao/mapping/sfPostDeliveryLogMapping.xml"/>
 	</mappers>
