@@ -1,0 +1,10 @@
+建议都用post请求：
+页面3接口：
+http://10.118.12.38:8080/sfPost/deliveryRecord/createWaybill?monthly_card_no=11111111&phone_number=110
+页面4接口：
+1.监听安卓端有无投柜动作,有则返回true（参数暂时可以不填）
+http://10.118.12.38:8080/sfPost/deliveryDetail/listenDeliveryStatus?postId=
+2.点击页面4的跳转按钮（终止ajax请求，参数暂时可以不填）
+http://10.118.12.38:8080/sfPost/deliveryDetail//completeDelivery?postId=
+页面5：
+http://10.118.12.38:8080/sfPost/deliveryRecord/endConfirm??monthly_card_no=111111111&delivery_nums=5
